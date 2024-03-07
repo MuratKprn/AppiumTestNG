@@ -1,6 +1,7 @@
 package Utilities;
 
 import io.appium.java_client.TouchAction;
+import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
 
@@ -14,6 +15,18 @@ public class Reusable {
                "(new UiSelector().scrollable(true)." +
                "instance(0)).scrollIntoView(new UiSelector().text(\""+
                elementText+"\").instance(0))";
+    }
+
+    public static void scrollWithUiScrollableAndClick(String elementText){
+
+        AndroidDriver driver = (AndroidDriver) Driver.getAndroidDriver();
+
+        String element =  "new UiScrollable" +
+                          "(new UiSelector().scrollable(true)." +
+                          "instance(0)).scrollIntoView(new UiSelector().text(\""+
+                           elementText+"\").instance(0))";
+
+        driver.findElementByAndroidUIAutomator(element).click();
     }
 
     public static String GetAppPackage (){
@@ -65,6 +78,8 @@ public class Reusable {
 
         }
     }
+
+
 
 
 }

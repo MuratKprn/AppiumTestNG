@@ -138,7 +138,6 @@ public class Test_04_CurrencyConverter {
         driver.sendSMS("55555555555555","1 ZLOTY = " + tryResult + "TRY");
     }
 
-
     @Test
     public void currencyConverterTest03 () throws IOException, InterruptedException {
 
@@ -163,7 +162,7 @@ public class Test_04_CurrencyConverter {
         currencyPage.number1.click();
 
         // Converted amount is saved as screenshot.
-        File screenshot =driver.getScreenshotAs(OutputType.FILE);
+        File screenshot = driver.getScreenshotAs(OutputType.FILE);
         File destFile = new File("C:\\Users\\murat\\IdeaProjects\\Appium\\Screenshots\\cc.png");
         FileUtils.copyFile(screenshot,destFile);
 
@@ -175,5 +174,21 @@ public class Test_04_CurrencyConverter {
         // User is notified via SMS.
         driver.sendSMS("55555555555555","1 ZLOTY = " + tryResult + "TRY");
     }
+
+    @Test
+    public void currencyConverterTest04 () throws IOException, InterruptedException {
+
+        // Verify that the app has been installed successfully.
+        Assert.assertTrue(driver.isAppInstalled(Reusable.GetAppPackage()));
+
+        // Verify that the application has been opened successfully.
+        currencyPage.topText.isDisplayed();
+
+        // The currency to be converted must be selected as Zloty.
+        Reusable.coordinatePress(205,475,600,1);
+
+
+    }
+
 
 }
